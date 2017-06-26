@@ -85,7 +85,56 @@ stylesToApply = [
  * __saferCharCode__
    *  Because some browsers use UCS-2 (as opposed to unicode) in javascript strings, some higher characters (like emoji's and asian characters) are incorrectly represented as two characters in a javascript string. This can make `[].slice.call(string)` return incorrect values with some of those higher characters represented as two seperate indexes. To solve this problem pass `true` for saferCharCode. saferCharCode causes `Array.from` to be used, so it will not work in IE unless you polyfill it.
 
+Example:
+```Javascript
+   highlight('😒😎', {
+	'background:yellow': [
+		[0,0]
+    ],
+	'background:pink': [
+		[1,1]
+    ]
+})
+```
+Might incorrectly output: `<span style="background:yellow">�</span><span style="background:pink">�</span>😎`
+However, with the saferCharCode parameter, it will always work fine:
+```Javascript
+   highlight('😒😎', {
+	'background:yellow': [
+		[0,0]
+    ],
+	'background:pink': [
+		[1,1]
+    ]
+}, false /*dontwraparound*/, true /*saferCharCode*/);
+```
+Will always output: `<span style="background:yellow">😒</span><span style="background:pink">😎</span>`
 
+
+### Example
+
+Javascirpt code:
+```Javascript
+var result = highlight('javascript programming', {
+	'background:yellow': [
+		[0,9]
+    ],
+	'background:pink': [
+		[11,0]
+    ]
+});
+```
+Result:
+```Javascript
+highlight('javascript programming', {
+	'background:yellow': [
+		[0,9]
+    ],
+	'background:pink': [
+		[11,-1]
+    ]
+})
+```
 
 
 
