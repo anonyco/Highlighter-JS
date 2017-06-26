@@ -6,18 +6,16 @@ A simple, small, fast, multilingual text highlighter in javascript.
 
 Download highlighter.min.js, place it in the same directory (folder) as your HTML file, and put this into your head (or somewhere before your code that uses it).
 ```Html
-<script src="highlighter.min.js" type="text/javascript"></script>
-```
-Or, if you don't need IE-8 support, then you can just use this:
-```Html
 <script src="highlighter.min.js"></script>
 ```
+
+Then, highlighter JS will set `window.highlighttext` to the highlighting function it creates.
 
 ### Documentation
 
 So, here is how to use highlighter JS.
 ```Javascript
-highlight(textToHighlight, stylesToApply, dontwraparound, saferCharCode);
+highlighttext(textToHighlight, stylesToApply, dontwraparound, saferCharCode);
 ```
  * __textToHighlight__
    *  The plain text you want to be highlighted. Must be a string or something convertertable to a string.
@@ -87,7 +85,7 @@ stylesToApply = [
 
 Example:
 ```Javascript
-   highlight('😒😎', {
+   highlighttext('😒😎', {
 	'background:yellow': [
 		[0,0]
     ],
@@ -99,7 +97,7 @@ Example:
 Might incorrectly output: `<span style="background:yellow">�</span><span style="background:pink">�</span>😎`
 However, with the saferCharCode parameter, it will always work fine:
 ```Javascript
-   highlight('😒😎', {
+   highlighttext('😒😎', {
 	'background:yellow': [
 		[0,0]
     ],
@@ -115,25 +113,21 @@ Will always output: `<span style="background:yellow">😒</span><span style="bac
 
 Javascirpt code:
 ```Javascript
-var result = highlight('javascript programming', {
-	'background:yellow': [
-		[0,9]
-    ],
-	'background:pink': [
-		[11,0]
-    ]
-});
-```
-Result:
-```Javascript
 highlight('javascript programming', {
-	'background:yellow': [
-		[0,9]
+    'background:yellow;color:red': [
+	[0,10]
     ],
-	'background:pink': [
-		[11,-1]
+    'background:pink': [
+	[14,-5]
+    ],
+    'font-style:italics;font-weight:bold': [
+	[-2,-3]
     ]
 })
+```
+Result:
+```Html
+<span style="background:yellow;color:red">javascript </span>pro<span style="background:pink">gram</span>m<span style="font-style:italics;font-weight:bold">in</span>g
 ```
 
 
