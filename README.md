@@ -4,18 +4,26 @@ A simple, small, fast, multilingual text highlighter in javascript.
 
 ### How To use / Install
 
-Download highlighter.min.js, place it in the same directory (folder) as your HTML file, and put this into your head (or somewhere before your code that uses it).
+#### From A Dropbox Server
+
+Just simply put this into your `<head>` (or at least somewhere before the code that uses it).
+```Html
+<script src="https://www.dropbox.com/s/wikkmrjga9p7msx/highlighter.min.js?dl=1"></script>
+```
+
+#### From A Local Copy
+If the drop box link broke or you simply don't want to use dropbox, then you can download highlighter.min.js, place it in the same directory (folder) as your HTML file, and put this into your `<head>` (or at least somewhere before the code that uses it).
 ```Html
 <script src="highlighter.min.js"></script>
 ```
 
-Then, highlighter JS will set `window.highlighttext` to the highlighting function it creates.
+Then, highlighter JS will set `window.highlight` to the highlighting function it creates.
 
 ### Documentation
 
 So, here is how to use highlighter JS.
 ```Javascript
-highlighttext(textToHighlight, stylesToApply, dontwraparound, saferCharCode);
+highlight(textToHighlight, stylesToApply, dontwraparound, saferCharCode);
 ```
  * __textToHighlight__
    *  The plain text you want to be highlighted. Must be a string or something convertertable to a string.
@@ -85,7 +93,7 @@ stylesToApply = [
 
 Example:
 ```Javascript
-   highlighttext('😒😎', {
+   highlight('😒😎', {
 	'background:yellow': [
 		[0,0]
     ],
@@ -97,7 +105,7 @@ Example:
 Might incorrectly output: `<span style="background:yellow">�</span><span style="background:pink">�</span>😎`
 However, with the saferCharCode parameter, it will always work fine:
 ```Javascript
-   highlighttext('😒😎', {
+   highlight('😒😎', {
 	'background:yellow': [
 		[0,0]
     ],
