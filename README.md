@@ -8,7 +8,7 @@ A simple, small, fast, multilingual text highlighter in javascript.
 
 Just simply put this into your `<head>` (or at least somewhere before the code that uses it).
 ```Html
-<script src="https://www.dropbox.com/s/wikkmrjga9p7msx/highlighter.min.js?dl=1"></script>
+<script src="https://dl.dropboxusercontent.com/s/wikkmrjga9p7msx/highlighter.min.js?dl=0"></script>
 ```
 
 #### From A Local Copy
