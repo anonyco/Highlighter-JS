@@ -1,6 +1,6 @@
 // Ich bin zu Deutsch neu.
-const AttributStiles = "style"
-const istListe = "isArray"
+const /*Variable ständig*/ AttributStiles = "style"
+const /*Variable ständig*/ istListe = "isArray"
 //const 
 hervorheben = function(text, stil, dontwraparound, saferCharCode){
 	/*[Deutsch]*/
