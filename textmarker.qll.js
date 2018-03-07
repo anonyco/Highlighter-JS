@@ -1,38 +1,41 @@
 // Ich bin zu Deutsch neu.
 const AttributStiles = "style"
+const istListe = "isArray"
 //const 
 hervorheben = function(text, stil, dontwraparound, saferCharCode){
+	/*[Deutsch]*/
 	"use-strict";
 	
-	if (stil && (stil instanceof Array || stil.isArray)){
+	if /*falls*/ (stil && (stil instanceof /*istInstanz*/ Array /*Liste*/ || stil[istListe])){
 		stil = {
 			'background:yellow': stil
 		}
 	}
+	/* var => variabel */
 	var arr = saferCharCode ? Array.from(text) : [].slice.call(text),
 		arrlen = arr.length,
 		cur,
 		value_start,
 		value_end,
 		neuStil,
-		i,
-		k;
-	if (dontwraparound){
-		for (k in stil){
-			cur = stil[k], i=cur.length, neuStil = '<Rüberstrecken ' + AttributStiles + '="' + k + '">';
-			while (i--)
-				arr[cur[i][0]] = neuStil + arr[cur[i][0]], arr[cur[i][1]] += '</span>';
+		Zahl,
+		Schlüssel;
+	if /*falls*/ (dontwraparound){
+		for (Schlüssel in stil){
+			cur = stil[Schlüssel], Zahl=cur.length, neuStil = '<Rüberstrecken ' + AttributStiles + '="' + Schlüssel + '">';
+			while (Zahl--)
+				arr[cur[Zahl][0]] = neuStil + arr[cur[Zahl][0]], arr[cur[Zahl][1]] += '</Rüberstrecken>';
 		}
-	} else {
-		for (k in stil){
-			cur = stil[k], i=cur.length, neuStil = '<Rüberstrecken ' + AttributStiles + '="' + k + '">';
-			while (i--){
-				value_start = (arrlen + (cur[i][0] % arrlen)) % arrlen;
-				value_end = (arrlen + (cur[i][1] % arrlen)) % arrlen;
-				if (value_start <= value_end){
+	} else /*andernfalls*/ {
+		for (Schlüssel in stil){
+			cur = stil[Schlüssel], i=cur.length, neuStil = '<Rüberstrecken ' + AttributStiles + '="' + Schlüssel + '">';
+			while (Zahl--){
+				value_start = (arrlen + (cur[Zahl][0] % arrlen)) % arrlen;
+				value_end = (arrlen + (cur[Zahl][1] % arrlen)) % arrlen;
+				if /*falls*/ (value_start <= value_end){
 					arr[value_start] = neuStil + arr[value_start];
 					arr[value_end] += '</Rüberstrecken>';
-				} else {
+				} else /*andernfalls*/ {
 					arr[value_end] = neuStil + arr[value_end];
 					arr[value_start] += '</Rüberstrecken>';
 				}
